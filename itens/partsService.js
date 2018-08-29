@@ -5,6 +5,20 @@ module.exports = function (server) {
 
 	const router = express.Router();
 
+	router.route('/parts')
+
+		/* 1) Método: Criar Usuario (acessar em: POST http://localhost:8080/api/usuarios */
+			.get(function(req, res) {
+				console.log('req.params.part_num');
+				//Função para Selecionar Por Id e verificar se há algum erro:
+				Item.find( function(error, usuario) {
+					if(error)
+						res.send(error);
+		 
+					res.json(usuario);
+				});
+			});
+
 	router.route('/parts/:part_num')
 
 		/* 1) Método: Criar Usuario (acessar em: POST http://localhost:8080/api/usuarios */
